@@ -106,3 +106,4 @@ tarefa13_lora_embarcatech/
 ## 👤 Desenvolvedor
 
 - [Matheus Santos Silva](https://github.com/matheusssilva991)
+- [Leonardo Bonifácio Vieira Santos](https://github.com/LeonardoBonifacio)
