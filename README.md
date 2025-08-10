@@ -1,11 +1,11 @@
-# � Sistema LoRa com Sensores Ambientais para Raspberry Pi Pico
+# Sistema LoRa com Sensores Ambientais para Raspberry Pi Pico
 
 Projeto embarcado para comunicação sem fio via LoRa utilizando Raspberry Pi Pico, com aquisição de dados ambientais (temperatura, umidade e pressão) através dos sensores AHT20 e BMP280.
 
 ## 📋 Descrição do Projeto
 
 O sistema é composto por dois programas principais:
-- **Transmissor (main.c):** lê dados dos sensores ambientais (AHT20 e BMP280) e envia via rádio LoRa (RFM95W).
+- **Transmissor (main_tx.c):** lê dados dos sensores ambientais (AHT20 e BMP280) e envia via rádio LoRa (RFM95W).
 - **Receptor (main_rx.c):** recebe os dados LoRa e exibe no terminal serial.
 
 Ideal para aplicações de telemetria, monitoramento ambiental e projetos de IoT de longo alcance.

@@ -8,11 +8,14 @@
 #ifndef LORA_INCLUDED
 #define LORA_INCLUDED
 
+#include "hardware/spi.h"
+#include "pico/stdlib.h"
+
 // Registradores
 #define REG_MAX_PAYLOAD_LENGTH      0x23
 #define REG_FIFO                    0x00
 #define REG_OPMODE                  0x01            //IMPORTANTE
-#define REG_FIFO_ADDR_PTR           0x0D 
+#define REG_FIFO_ADDR_PTR           0x0D
 #define REG_FIFO_TX_BASE_AD         0x0E
 #define REG_FIFO_RX_BASE_AD         0x0F
 #define REG_FIFO_RX_CURRENT_ADDR    0x10
@@ -105,5 +108,32 @@
 #define REG_LNA                     0x0C
 #define LNA_MAX_GAIN                0x23  // 0010 0011
 #define LNA_OFF_GAIN                0x00
+
+// Define uma union para converter float para um array de bytes
+typedef union {
+    float f;
+    uint8_t b[4];
+} float_to_byte;
+
+// Estrutura para configuração do módulo LoRa
+typedef struct {
+    spi_inst_t *spi;
+    uint8_t pin_cs;
+    uint8_t pin_rst;
+    uint8_t pin_sck;
+    uint8_t pin_mosi;
+    uint8_t pin_miso;
+} lora_config_t;
+
+// Protótipos de funções atualizados
+void lora_setup(lora_config_t *config);
+void lora_send_packet(lora_config_t *config, uint8_t* data, uint8_t len);
+void SetFrequency(lora_config_t *config, double Frequency);
+void writeRegister(lora_config_t *config, uint8_t reg, uint8_t value);
+uint8_t readRegister(lora_config_t *config, uint8_t reg);
+void cs_select(uint8_t pin_cs);
+void cs_deselect(uint8_t pin_cs);
+void lora_receive_continuous(lora_config_t *config);
+bool lora_receive_packet(lora_config_t *config, uint8_t *buffer, uint8_t *len);
 
 #endif

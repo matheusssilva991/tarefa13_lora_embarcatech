@@ -33,10 +33,10 @@ project(main C CXX ASM)
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
-add_executable(${PROJECT_NAME} main_rx.c
-        #lib/rfm95w/rfm95w.c
-        lib/sensores/aht20.c
-        lib/sensores/bmp280.c
+add_executable(${PROJECT_NAME} main_tx.c
+        lib/aht20/aht20.c
+        lib/bmp280/bmp280.c
+        lib/lora/lora.c
 )
 
 pico_set_program_name(${PROJECT_NAME} "base")
